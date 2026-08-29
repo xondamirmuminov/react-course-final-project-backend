@@ -1,0 +1,48 @@
+# compiled output
+/dist
+/node_modules
+/build
+
+# lockfiles (npm is the package manager for this project)
+pnpm-lock.yaml
+yarn.lock
+
+# logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# GraphQL generated schema (optional local artifact)
+src/schema.gql
