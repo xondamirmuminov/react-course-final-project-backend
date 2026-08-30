@@ -71,7 +71,7 @@ Environment variables:
    - `CORS_ORIGIN` — your frontend URL(s), e.g. `https://your-app.vercel.app`
 5. After the first deploy, Render runs `npm run seed:prod` once to load demo data.
 
-Free Render web services sleep after ~15 minutes idle (cold start ~1 minute). GraphQL playground: `https://<your-service>.onrender.com/graphql`.
+Free Render web services sleep after ~15 minutes idle (cold start ~1 minute). Apollo Sandbox (GraphQL IDE): `https://<your-service>.onrender.com/graphql`.
 
 ## Seed database
 
@@ -102,7 +102,7 @@ npm run build
 npm run start:prod
 ```
 
-Open GraphQL Playground: **http://localhost:4000/graphql**
+Open Apollo Sandbox: **http://localhost:4000/graphql**
 
 ---
 

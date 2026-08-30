@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
@@ -25,8 +26,14 @@ import { UsersModule } from './users/users.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
-      playground: true,
+      // Legacy Playground is deprecated; use embedded Apollo Sandbox instead.
+      playground: false,
       introspection: true,
+      plugins: [
+        ApolloServerPluginLandingPageLocalDefault({
+          embed: true,
+        }),
+      ],
       context: ({ req }: { req: Request }) => ({ req }),
     }),
     UsersModule,
