@@ -58,6 +58,20 @@ Environment variables:
 | `JWT_SECRET` | Secret key for signing JWT tokens |
 | `ADMIN_EMAIL` | Admin account email for `createListing` |
 | `ADMIN_PASSWORD` | Admin account password |
+| `CORS_ORIGIN` | Optional comma-separated frontend origins (production) |
+
+## Deploy (Render + MongoDB Atlas)
+
+1. Create a free **MongoDB Atlas** cluster, database user, and network access rule allowing `0.0.0.0/0` (required for Render). Copy the connection string (`mongodb+srv://...`).
+2. Push this repo to GitHub (includes `render.yaml`).
+3. Open [Render Blueprints](https://dashboard.render.com/blueprints/new), connect the repo, and deploy.
+4. When prompted, set:
+   - `MONGODB_URI` — Atlas connection string
+   - `ADMIN_EMAIL` / `ADMIN_PASSWORD` — admin login for seeding
+   - `CORS_ORIGIN` — your frontend URL(s), e.g. `https://your-app.vercel.app`
+5. After the first deploy, Render runs `npm run seed:prod` once to load demo data.
+
+Free Render web services sleep after ~15 minutes idle (cold start ~1 minute). GraphQL playground: `https://<your-service>.onrender.com/graphql`.
 
 ## Seed database
 

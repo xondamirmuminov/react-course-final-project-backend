@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: airbnb-clone-backend
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    initialDeployHook: npm run seed:prod
+    envVars:
+      - key: NODE_VERSION
+        value: "22.12.0"
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
