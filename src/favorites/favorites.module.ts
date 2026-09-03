@@ -1,10 +1,11 @@
-import { Module, Scope } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from '../auth/auth.module';
 import { ListingsModule } from '../listings/listings.module';
 import { Favorite, FavoriteSchema } from './favorite.schema';
 import { FavoritesResolver } from './favorites.resolver';
 import { FavoritesService } from './favorites.service';
+import { ListingFavoriteResolver } from './listing-favorite.resolver';
 import { UserFavoritesLoader } from './user-favorites.loader';
 
 @Module({
@@ -17,12 +18,9 @@ import { UserFavoritesLoader } from './user-favorites.loader';
   ],
   providers: [
     FavoritesService,
+    FavoritesResolver,
     UserFavoritesLoader,
-    {
-      provide: FavoritesResolver,
-      useClass: FavoritesResolver,
-      scope: Scope.REQUEST,
-    },
+    ListingFavoriteResolver,
   ],
 })
 export class FavoritesModule {}

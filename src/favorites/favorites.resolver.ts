@@ -1,28 +1,14 @@
-import { Injectable, Scope, UseGuards } from '@nestjs/common';
-import {
-  Args,
-  ID,
-  Mutation,
-  Parent,
-  Query,
-  ResolveField,
-  Resolver,
-} from '@nestjs/graphql';
+import { UseGuards } from '@nestjs/common';
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { GqlAuthGuard } from '../auth/gql-auth.guard';
-import { OptionalGqlAuthGuard } from '../auth/optional-gql-auth.guard';
 import { Listing } from '../listings/listing.type';
 import { User } from '../users/user.type';
 import { FavoritesService } from './favorites.service';
-import { UserFavoritesLoader } from './user-favorites.loader';
 
-@Injectable({ scope: Scope.REQUEST })
-@Resolver(() => Listing)
+@Resolver()
 export class FavoritesResolver {
-  constructor(
-    private readonly favoritesService: FavoritesService,
-    private readonly userFavoritesLoader: UserFavoritesLoader,
-  ) {}
+  constructor(private readonly favoritesService: FavoritesService) {}
 
   @Query(() => [Listing])
   @UseGuards(GqlAuthGuard)
@@ -37,23 +23,6 @@ export class FavoritesResolver {
     @Args('listingId', { type: () => ID }) listingId: string,
   ) {
     return this.favoritesService.isFavorite(user.id, listingId);
-  }
-
-  @ResolveField(() => Boolean)
-  @UseGuards(OptionalGqlAuthGuard)
-  async isFavorite(
-    @Parent() listing: Listing,
-    @CurrentUser() user?: User | null,
-  ) {
-    if (!user) {
-      return false;
-    }
-
-    const favoriteIds = await this.userFavoritesLoader.getFavoriteListingIds(
-      user.id,
-    );
-
-    return favoriteIds.has(listing.id);
   }
 
   @Mutation(() => Listing)

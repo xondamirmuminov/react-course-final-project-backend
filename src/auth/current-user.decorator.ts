@@ -3,8 +3,9 @@ import { GqlExecutionContext } from '@nestjs/graphql';
 import { User } from '../users/user.type';
 
 export const CurrentUser = createParamDecorator(
-  (_data: unknown, context: ExecutionContext): User => {
+  (_data: unknown, context: ExecutionContext): User | undefined => {
     const gqlContext = GqlExecutionContext.create(context);
-    return gqlContext.getContext<{ req: { user: User } }>().req.user;
+    const ctx = gqlContext.getContext<{ req?: { user?: User } }>();
+    return ctx.req?.user;
   },
 );
