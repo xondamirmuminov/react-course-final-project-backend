@@ -52,5 +52,8 @@ export class Listing {
   isFeatured: boolean;
 
   @Field()
+  isFavorite: boolean;
+
+  @Field()
   createdAt: Date;
 }

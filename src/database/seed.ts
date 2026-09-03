@@ -5,7 +5,7 @@ import { seedListings } from './seed-data/listings.data';
 
 async function seed() {
   const mongoUri =
-    process.env.MONGODB_URI ?? 'mongodb://localhost:27017/airbnb-mini';
+    process.env.MONGODB_URI ?? 'mongodb://localhost:27017/apartment-booking';
 
   await mongoose.connect(mongoUri);
 

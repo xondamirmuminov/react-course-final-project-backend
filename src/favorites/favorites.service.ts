@@ -73,6 +73,15 @@ export class FavoritesService {
     return this.listingsService.findByIds(listingIds);
   }
 
+  async findListingIdsByUser(userId: string) {
+    const favorites = await this.favoriteModel
+      .find({ userId: new Types.ObjectId(userId) })
+      .select('listingId')
+      .exec();
+
+    return favorites.map((favorite) => favorite.listingId.toString());
+  }
+
   async isFavorite(userId: string, listingId: string) {
     const favorite = await this.favoriteModel
       .findOne({

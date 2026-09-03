@@ -1,12 +1,12 @@
-# Airbnb Mini API
+# React Groups Final Project Backend
 
-Backend GraphQL API for the **Airbnb Mini** final React project.
+Backend GraphQL API for the **React Groups** apartment booking final project.
 
 Students clone this repository, install dependencies, run MongoDB, seed the database, start the backend, and connect their React + Apollo Client frontend to it.
 
 ## What is this?
 
-This is a beginner-friendly NestJS GraphQL backend for an Airbnb-style accommodation booking app. It provides:
+This is a beginner-friendly NestJS GraphQL backend for an apartment booking app. It provides:
 
 - User registration and login (JWT)
 - Listings with search, filters, and pagination
@@ -27,7 +27,7 @@ This is a beginner-friendly NestJS GraphQL backend for an Airbnb-style accommoda
 
 ```bash
 git clone <repository-url>
-cd airbnb-clone-backend
+cd react-groups-final-project-backend
 npm install
 ```
 

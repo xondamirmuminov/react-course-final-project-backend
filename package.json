@@ -1,7 +1,7 @@
 {
-  "name": "airbnb-clone-backend",
+  "name": "react-groups-final-project-backend",
   "version": "0.0.1",
-  "description": "GraphQL backend API for the Airbnb Mini React final project",
+  "description": "GraphQL backend API for the React Groups apartment booking final project",
   "author": "",
   "private": true,
   "license": "UNLICENSED",

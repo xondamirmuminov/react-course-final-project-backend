@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: airbnb-clone-backend
+    name: react-groups-final-project-backend
     runtime: node
     plan: free
     buildCommand: npm ci --include=dev && npm run build

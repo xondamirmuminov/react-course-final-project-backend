@@ -1,7 +1,7 @@
 services:
   mongodb:
     image: mongo:7
-    container_name: airbnb-mini-mongodb
+    container_name: apartment-booking-mongodb
     ports:
       - '27017:27017'
     volumes:

@@ -8,6 +8,7 @@ import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
 import { GqlAuthGuard } from './gql-auth.guard';
 import { JwtStrategy } from './jwt.strategy';
+import { OptionalGqlAuthGuard } from './optional-gql-auth.guard';
 
 @Module({
   imports: [
@@ -22,7 +23,14 @@ import { JwtStrategy } from './jwt.strategy';
       }),
     }),
   ],
-  providers: [AuthService, AuthResolver, JwtStrategy, GqlAuthGuard, AdminGuard],
-  exports: [AuthService, GqlAuthGuard, AdminGuard, JwtModule],
+  providers: [
+    AuthService,
+    AuthResolver,
+    JwtStrategy,
+    GqlAuthGuard,
+    OptionalGqlAuthGuard,
+    AdminGuard,
+  ],
+  exports: [AuthService, GqlAuthGuard, OptionalGqlAuthGuard, AdminGuard, JwtModule],
 })
 export class AuthModule {}
