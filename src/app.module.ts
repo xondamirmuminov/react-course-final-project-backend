@@ -26,6 +26,8 @@ import { UsersModule } from './users/users.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
+      // Enable guards on @ResolveField (e.g. Listing.isFavorite optional auth).
+      fieldResolverEnhancers: ['guards'],
       // Legacy Playground is deprecated; use embedded Apollo Sandbox instead.
       playground: false,
       introspection: true,
